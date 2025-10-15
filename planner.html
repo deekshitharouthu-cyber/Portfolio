@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan It Smart - Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #f7f1e7;
+        color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: #d8c4b6;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .navbar .logo {
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #fff;
+    }
+    .navbar .nav-links button {
+        margin-left: 20px;
+        padding: 8px 16px;
+        border: none;
+        background-color: #f7f1e7;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .navbar .nav-links button:hover {
+        background-color: #e2d1bc;
+    }
+
+    /* Layout */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 30px;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    /* Category Boxes */
+    .category-box {
+        background-color: #fff8f0;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .category-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .category-header h3 {
+        font-size: 1.2rem;
+        color: #8b5e3c;
+        margin: 0;
+    }
+
+    .priority {
+        background-color: #f0e1d2;
+        border: none;
+        border-radius: 8px;
+        padding: 4px 8px;
+        font-size: 0.8rem;
+        color: #5b4636;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .priority:hover {
+        background-color: #e6d0ba;
+    }
+
+    .task {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background-color: #fdf5ef;
+        padding: 6px 8px;
+        border-radius: 10px;
+        border: 1px solid #e3d1c0;
+    }
+
+    .task input[type="checkbox"] {
+        accent-color: #b38b6d;
+    }
+
+    .task input[type="text"] {
+        flex: 1;
+        padding: 6px 8px;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 0.9rem;
+        color: #5b4636;
+    }
+
+    .add-task {
+        margin-top: 8px;
+        padding: 5px 10px;
+        border: none;
+        background-color: #d8c4b6;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .add-task:hover {
+        background-color: #bfa38b;
+    }
+
+    /* Others Section */
+    .others {
+        width: 100%;
+        max-width: 800px;
+        margin: 30px auto;
+        background-color: #fff2e6;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .others h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+        color: #8b5e3c;
+    }
+
+    .others input[type="text"] {
+        width: 100%;
+        padding: 8px 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">Plan It Smart</div>
+    <div class="nav-links">
+        <button onclick="window.location.href='home.html'">Home</button>
+        <button onclick="window.location.href='planner.html'">Planner</button>
+        <button onclick="window.location.href='timer.html'">Focus Timer</button>
+        <button onclick="window.location.href='progress.html'">Progress</button>
+    </div>
+</div>
+
+<!-- Categories -->
+<div class="container">
+
+    <!-- Example category -->
+    <div class="category-box">
+        <div class="category-header">
+            <h3>🎨 Theme</h3>
+            <select class="priority"><option>Priority</option><option>🔴 High</option><option>🟠 Medium</option><option>🟡 Low</option></select>
+        </div>
+        <div class="task"><input type="checkbox" class="task-checkbox"><input type="text" placeholder="Add task"></div>
+        <button class="add-task">+ Add Task</button>
+    </div>
+    <!-- Repeat other categories as before, just make sure each checkbox has class="task-checkbox" -->
+</div>
+
+<!-- Others -->
+<div class="others">
+    <h3>🗂️ Others</h3>
+    <input type="text" placeholder="Add custom task">
+</div>
+
+<script>
+    // Function to update completed tasks in localStorage
+    function updateCompletedTasks() {
+        const allTasks = document.querySelectorAll('.task-checkbox');
+        let completed = 0;
+        allTasks.forEach(cb => { if(cb.checked) completed++; });
+        localStorage.setItem('completedTasks', completed);
+        localStorage.setItem('totalTasks', allTasks.length);
+    }
+
+    // Add checkbox change listener
+    document.addEventListener('change', (e) => {
+        if(e.target.classList.contains('task-checkbox')) {
+            updateCompletedTasks();
+        }
+    });
+
+    // Add new tasks dynamically
+    document.querySelectorAll('.add-task').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const box = btn.parentElement;
+            const newTask = document.createElement('div');
+            newTask.classList.add('task');
+            newTask.innerHTML = `<input type="checkbox" class="task-checkbox"><input type="text" placeholder="Add task">`;
+            box.insertBefore(newTask, btn);
+            updateCompletedTasks();
+        });
+    });
+
+    // Initialize storage on page load
+    updateCompletedTasks();
+</script>
+
+</body>
+</html>

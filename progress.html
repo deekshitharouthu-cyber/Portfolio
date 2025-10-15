@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan It Smart - Progress</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #f7f1e7;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: #d8c4b6;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .navbar .logo {
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #fff;
+    }
+    .navbar .nav-links button {
+        margin-left: 20px;
+        padding: 8px 16px;
+        border: none;
+        background-color: #f7f1e7;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .navbar .nav-links button:hover {
+        background-color: #e2d1bc;
+    }
+
+    /* Page Header */
+    .header {
+        margin-top: 50px;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #8b5e3c;
+        text-align: center;
+    }
+
+    /* Overview Cards */
+    .overview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin: 40px 0;
+        width: 90%;
+        max-width: 1000px;
+    }
+    .card {
+        background-color: #fff8f0;
+        padding: 20px 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        width: 200px;
+    }
+    .card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #5b4636;
+        margin-bottom: 10px;
+    }
+    .card p {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #8b5e3c;
+        margin: 0;
+    }
+
+    /* Category Progress Bars */
+    .category-progress {
+        width: 90%;
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+    .category {
+        margin-bottom: 15px;
+    }
+    .category-label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #5b4636;
+    }
+    .progress-bar-bg {
+        background-color: #f0e1d2;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 20px;
+    }
+    .progress-bar-fill {
+        background-color: #d8c4b6;
+        height: 100%;
+        width: 0;
+        text-align: right;
+        color: #fff;
+        font-size: 0.9rem;
+        line-height: 20px;
+        padding-right: 5px;
+        border-radius: 8px 0 0 8px;
+        transition: width 1s ease-in-out;
+    }
+
+    /* Motivational Quote */
+    .motivation {
+        background-color: #fff2e6;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        font-size: 1.2rem;
+        color: #8b5e3c;
+    }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">Plan It Smart</div>
+    <div class="nav-links">
+        <button onclick="window.location.href='home.html'">Home</button>
+        <button onclick="window.location.href='planner.html'">Planner</button>
+        <button onclick="window.location.href='timer.html'">Focus Timer</button>
+        <button onclick="window.location.href='progress.html'">Progress</button>
+    </div>
+</div>
+
+<div class="header">Your Progress</div>
+
+<!-- Overview Cards -->
+<div class="overview">
+    <div class="card">
+        <h3>Tasks Completed</h3>
+        <p id="tasks-completed">12</p>
+    </div>
+    <div class="card">
+        <h3>Tasks Pending</h3>
+        <p id="tasks-pending">8</p>
+    </div>
+    <div class="card">
+        <h3>Focus Sessions</h3>
+        <p id="focus-sessions">3</p>
+    </div>
+</div>
+
+<!-- Category Progress -->
+<div class="category-progress">
+    <div class="category">
+        <div class="category-label">🎨 Theme</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 70%;">70%</div></div>
+    </div>
+    <div class="category">
+        <div class="category-label">🗓️ Schedule</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 50%;">50%</div></div>
+    </div>
+    <div class="category">
+        <div class="category-label">👥 Audience</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;">60%</div></div>
+    </div>
+    <div class="category">
+        <div class="category-label">📋 Agenda</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;">80%</div></div>
+    </div>
+    <div class="category">
+        <div class="category-label">💰 Budget</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 40%;">40%</div></div>
+    </div>
+    <div class="category">
+        <div class="category-label">👤 Roles</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 90%;">90%</div></div>
+    </div>
+</div>
+
+<!-- Motivational Quote -->
+<div class="motivation">🌟 Great job! You’ve completed 12 tasks today, keep the momentum going! 🌟</div>
+
+</body>
+</html>
